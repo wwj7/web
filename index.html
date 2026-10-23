@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>longshangbaihexiang</title>
+    <link rel="stylesheet" href="style.css?v=20261024f">
+    <!-- ECharts CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <!-- ECharts 词云扩展 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2/dist/echarts-wordcloud.min.js"></script>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="百合花标识">
+                        <defs>
+                            <linearGradient id="logoLilyGrad" x1="10" y1="6" x2="38" y2="42" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#74e6a8"/>
+                                <stop offset="1" stop-color="#d8a444"/>
+                            </linearGradient>
+                        </defs>
+                        <g stroke="url(#logoLilyGrad)" stroke-width="1.7" stroke-linejoin="round" fill="#1fb572" fill-opacity="0.12">
+                            <path d="M24 27.5C20.6 19.5 20.6 11.5 24 5.5C27.4 11.5 27.4 19.5 24 27.5Z"/>
+                            <path transform="rotate(60 24 27.5)" d="M24 27.5C20.6 19.5 20.6 11.5 24 5.5C27.4 11.5 27.4 19.5 24 27.5Z"/>
+                            <path transform="rotate(120 24 27.5)" d="M24 27.5C20.6 19.5 20.6 11.5 24 5.5C27.4 11.5 27.4 19.5 24 27.5Z"/>
+                            <path transform="rotate(180 24 27.5)" d="M24 27.5C20.6 19.5 20.6 11.5 24 5.5C27.4 11.5 27.4 19.5 24 27.5Z"/>
+                            <path transform="rotate(240 24 27.5)" d="M24 27.5C20.6 19.5 20.6 11.5 24 5.5C27.4 11.5 27.4 19.5 24 27.5Z"/>
+                            <path transform="rotate(300 24 27.5)" d="M24 27.5C20.6 19.5 20.6 11.5 24 5.5C27.4 11.5 27.4 19.5 24 27.5Z"/>
+                        </g>
+                        <g fill="#f2cd7e">
+                            <circle cx="24" cy="27.5" r="1.8"/>
+                            <circle cx="24" cy="20" r="1.3"/>
+                            <circle cx="17.5" cy="31.25" r="1.3"/>
+                            <circle cx="30.5" cy="31.25" r="1.3"/>
+                        </g>
+                    </svg>
+                </span>
+                <div class="logo-text">
+                    <h1>陇上百合香</h1>
+                    <p>兰州百合产业数据可视化平台</p>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-page="home">首页</a>
+                <a href="#" class="nav-item" data-page="pain">产业痛点</a>
+                <a href="#" class="nav-item" data-page="solution">数字赋能</a>
+                <a href="#" class="nav-item" data-page="trace">扫码溯源</a>
+                <a href="#" class="nav-item" data-page="product">产品团购</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+
+        <!-- ========== 页面1：首页 ========== -->
+        <section class="page active" id="page-home">
+            <!-- 作品简介 -->
+            <div class="intro-block">
+                <div class="intro-left">
+                    <p class="intro-text">本作品面向兰州百合产业，用数据可视化+交互溯源+产品矩阵，展示数字赋能乡村振兴的可行路径。</p>
+                    <p class="intro-subtitle-text">本平台不仅是数据展示大屏，更是一个助力兰州百合「拉新-转化-复购」的数字营销落地原型。</p>
+                    <div class="intro-tags">
+                        <span class="intro-tag">数据可视化</span>
+                        <span class="intro-tag">交互溯源</span>
+                        <span class="intro-tag">乡村振兴</span>
+                    </div>
+                </div>
+                <a href="#" class="intro-btn">查看演示视频</a>
+            </div>
+
+            <!-- 开始探索按钮 -->
+            <div class="explore-wrap">
+                <button class="explore-btn" id="exploreBtn">开始探索 ↓</button>
+            </div>
+
+            <!-- 沉浸式品牌故事 -->
+            <div class="brand-story" id="brandStory">
+                <figure class="brand-story-media">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=%E5%85%B0%E5%B7%9E%E7%94%9C%E7%99%BE%E5%90%88%EF%BC%8C%E6%B4%81%E7%99%BD%E9%A5%B1%E6%BB%A1%E7%9A%84%E9%B2%9C%E7%99%BE%E5%90%88%E9%B3%9E%E8%8C%8E%E7%89%B9%E5%86%99%EF%BC%8C%E9%BB%84%E5%9C%9F%E9%AB%98%E5%8E%9F%E6%A2%AF%E7%94%B0%E4%B8%8E%E8%BF%9C%E5%B1%B1%E8%83%8C%E6%99%AF%EF%BC%8C%E6%B8%85%E6%99%A8%E6%9F%94%E5%92%8C%E8%87%AA%E7%84%B6%E5%85%89%EF%BC%8C%E9%AB%98%E7%BA%A7%E5%95%86%E4%B8%9A%E6%91%84%E5%BD%B1%EF%BC%8C%E7%BB%86%E8%85%BB%E8%B4%A8%E6%84%9F%EF%BC%8C%E6%9A%96%E9%87%91%E8%89%B2%E8%B0%83&image_size=portrait_4_3" alt="兰州百合：蔬菜人参">
+                    <figcaption>兰州百合：蔬菜人参</figcaption>
+                </figure>
+                <div class="brand-story-text">
+                    <p class="brand-story-desc" id="brandStoryText"></p>
+                    <button class="brand-story-btn" id="brandStoryBtn" type="button">探索百合数据 →</button>
+                </div>
+            </div>
+
+            <!-- 平台定位 -->
+            <div class="platform-positioning">
+                <div class="pp-head">
+                    <h3 class="pp-title">平台定位</h3>
+                    <p class="pp-subtitle">不只是数据可视化平台，更是助力兰州百合「拉新 — 转化 — 复购」的数字营销原型</p>
+                </div>
+                <div class="pp-flow">
+                    <div class="pp-stage">
+                        <div class="pp-stage-num">01</div>
+                        <h4 class="pp-stage-name">拉新</h4>
+                        <p class="pp-stage-desc">数据可视化讲好兰州百合故事，扫码溯源建立信任，短视频 + 产地直播触达新客</p>
+                    </div>
+                    <div class="pp-arrow" aria-hidden="true">→</div>
+                    <div class="pp-stage">
+                        <div class="pp-stage-num">02</div>
+                        <h4 class="pp-stage-name">转化</h4>
+                        <p class="pp-stage-desc">5 类产品矩阵覆盖多元场景，限时团购 + 助农价降低决策门槛，一键预约下单</p>
+                    </div>
+                    <div class="pp-arrow" aria-hidden="true">→</div>
+                    <div class="pp-stage">
+                        <div class="pp-stage-num">03</div>
+                        <h4 class="pp-stage-name">复购</h4>
+                        <p class="pp-stage-desc">β-葡聚糖等营养数据沉淀健康心智，会员社群 + 周期性复购提醒，复购率提升至 45%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-header">
+                <h2 class="page-title">产业总览</h2>
+                <p class="page-subtitle">兰州百合 · 全国唯一食用甜百合 · 国家地理标志产品</p>
+            </div>
+
+            <!-- 数据卡片 -->
+            <div class="stat-cards" id="statCards">
+                <div class="stat-card">
+                    <div class="stat-icon">🍃</div>
+                    <div class="stat-info">
+                        <div class="stat-value" data-target="1.97">0</div>
+                        <div class="stat-label">种植面积（万亩）</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌾</div>
+                    <div class="stat-info">
+                        <div class="stat-value" data-target="550">0</div>
+                        <div class="stat-label">年产量（万公斤）</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🧬</div>
+                    <div class="stat-info">
+                        <div class="stat-value" data-target="13.5">0</div>
+                        <div class="stat-label">β-葡聚糖（mg/g）</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-info">
+                        <div class="stat-value" data-target="160">0</div>
+                        <div class="stat-label">种植历史（年）</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 核心消费洞察横幅 -->
+            <div class="insight-banner">
+                <div class="insight-banner-item">
+                    <span class="ib-value">62%</span>
+                    <span class="ib-label">偏好鲜百合</span>
+                </div>
+                <span class="ib-divider" aria-hidden="true">|</span>
+                <div class="insight-banner-item">
+                    <span class="ib-value">76.35%</span>
+                    <span class="ib-label">购买动机为养生滋补</span>
+                </div>
+                <span class="ib-divider" aria-hidden="true">|</span>
+                <div class="insight-banner-item">
+                    <span class="ib-value">30元/斤</span>
+                    <span class="ib-label">是购买分水岭</span>
+                </div>
+            </div>
+
+            <!-- 调研关键发现 -->
+            <div class="research-insights">
+                <div class="card-title">最新调研关键发现</div>
+                <div class="insight-cards">
+                    <div class="insight-card">
+                        <div class="insight-icon">🥬</div>
+                        <div class="insight-value">62<span>%</span></div>
+                        <div class="insight-label">偏好鲜百合</div>
+                        <p class="insight-desc">鲜食仍是消费者主流选择，真空锁鲜与鲜切净菜需求旺盛</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">💚</div>
+                        <div class="insight-value">76.35<span>%</span></div>
+                        <div class="insight-label">购买动机为养生滋补</div>
+                        <p class="insight-desc">健康诉求驱动购买决策，β-葡聚糖等营养成分是核心卖点</p>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon">💰</div>
+                        <div class="insight-value">30<span>元/斤</span></div>
+                        <div class="insight-label">以下购买更集中</div>
+                        <p class="insight-desc">大众价格带销量最高，高性价比产品是走量主力</p>
+                    </div>
+                </div>
+                <p class="insight-source">数据来源：兰州市七里河区西果园镇实地调研（408 份有效问卷）</p>
+            </div>
+
+            <!-- 海拔梯度与营养成分关联双轴图 -->
+            <div class="chart-card wide">
+                <div class="card-title">海拔梯度与百合营养成分关联</div>
+                <div class="chart-container chart-tall" id="chart-nutrient"></div>
+                <p class="chart-note">数据来源：调研报告，海拔2000米处β-葡聚糖含量较普通品种高52%。</p>
+            </div>
+
+            <!-- 图表区 -->
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <div class="card-title">海拔与营养成分关联分析</div>
+                    <div class="chart-container" id="chart-altitude"></div>
+                </div>
+                <div class="chart-card">
+                    <div class="card-title">近五年百合产业产值趋势</div>
+                    <div class="chart-container" id="chart-trend"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 页面2：产业痛点 ========== -->
+        <section class="page" id="page-pain">
+            <div class="page-header">
+                <h2 class="page-title">产业痛点</h2>
+                <p class="page-subtitle">基于408份有效问卷调研，兰州百合产业面临种源、冷链、加工、品牌四大挑战。</p>
+            </div>
+
+            <!-- 调研图表区 -->
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <div class="card-title">消费者对兰州百合的了解程度</div>
+                    <div class="chart-container" id="chart-awareness" style="height:350px;"></div>
+                </div>
+                <div class="chart-card">
+                    <div class="card-title">消费者购买动机TOP3</div>
+                    <div class="chart-container" id="chart-motivation" style="height:350px;"></div>
+                </div>
+            </div>
+
+            <!-- 调研高频关键词 -->
+            <div class="keyword-section">
+                <div class="card-title">调研高频关键词</div>
+                <div class="keyword-cloud">
+                    <span class="kw-tag kw-lg" style="color:var(--green)">种子品质</span>
+                    <span class="kw-tag kw-sm" style="color:var(--gold)">新鲜程度</span>
+                    <span class="kw-tag kw-md" style="color:var(--green)">百合品质</span>
+                    <span class="kw-tag kw-sm" style="color:var(--gold)">技术</span>
+                    <span class="kw-tag kw-md" style="color:var(--green)">改进</span>
+                    <span class="kw-tag kw-lg" style="color:var(--gold)">市场</span>
+                    <span class="kw-tag kw-sm" style="color:var(--green)">遭灾</span>
+                    <span class="kw-tag kw-md" style="color:var(--gold)">冷链</span>
+                    <span class="kw-tag kw-lg" style="color:var(--green)">深加工</span>
+                    <span class="kw-tag kw-md" style="color:var(--gold)">品牌</span>
+                </div>
+            </div>
+
+            <!-- 对应解决方案 -->
+            <div class="solution-map">
+                <div class="card-title">对应解决方案</div>
+                <div class="sol-row">
+                    <span class="sol-pain">多年连作导致种球品质下降，病虫害加剧</span>
+                    <span class="sol-arrow">→</span>
+                    <span class="sol-solution">电子档案 + 良种繁育基地</span>
+                </div>
+                <div class="sol-row">
+                    <span class="sol-pain">采后预冷能力不足，损耗率达15%-20%</span>
+                    <span class="sol-arrow">→</span>
+                    <span class="sol-solution">产地预冷站 + 物联网温控</span>
+                </div>
+                <div class="sol-row">
+                    <span class="sol-pain">产品以鲜食为主，附加价值低，产业链短</span>
+                    <span class="sol-arrow">→</span>
+                    <span class="sol-solution">5类产品矩阵</span>
+                </div>
+                <div class="sol-row">
+                    <span class="sol-pain">区域品牌众多，缺乏统一识别度</span>
+                    <span class="sol-arrow">→</span>
+                    <span class="sol-solution">统一区域公用品牌 + IP形象</span>
+                </div>
+            </div>
+
+            <!-- 12周落地执行路线图 -->
+            <div class="exec-timeline">
+                <div class="page-header">
+                    <h2 class="page-title">12 周落地执行路线图</h2>
+                    <p class="page-subtitle">六阶段从准备到复盘，悬停发光节点查看该阶段交付物。</p>
+                </div>
+
+                <div class="timeline-track-wrap">
+                    <div class="timeline-track">
+                        <div class="timeline-progress" id="timelineProgress"></div>
+                        <!-- 节点1：准备期 -->
+                        <div class="timeline-node">
+                            <div class="node-dot"></div>
+                            <div class="node-tooltip">
+                                <div class="tt-week">第 1-2 周 · 准备期</div>
+                                <div class="tt-title">交付物</div>
+                                <ul class="tt-list">
+                                    <li>产品价格表</li>
+                                    <li>包装样稿</li>
+                                </ul>
+                            </div>
+                            <div class="node-label">
+                                <span class="node-week">W1-2</span>
+                                <span class="node-phase">准备期</span>
+                            </div>
+                        </div>
+                        <!-- 节点2：物料期 -->
+                        <div class="timeline-node">
+                            <div class="node-dot"></div>
+                            <div class="node-tooltip">
+                                <div class="tt-week">第 3-4 周 · 物料期</div>
+                                <div class="tt-title">交付物</div>
+                                <ul class="tt-list">
+                                    <li>团购模板</li>
+                                    <li>直播脚本</li>
+                                </ul>
+                            </div>
+                            <div class="node-label">
+                                <span class="node-week">W3-4</span>
+                                <span class="node-phase">物料期</span>
+                            </div>
+                        </div>
+                        <!-- 节点3：渠道触达 -->
+                        <div class="timeline-node">
+                            <div class="node-dot"></div>
+                            <div class="node-tooltip">
+                                <div class="tt-week">第 5-6 周 · 渠道触达</div>
+                                <div class="tt-title">交付物</div>
+                                <ul class="tt-list">
+                                    <li>团长意向清单</li>
+                                    <li>企业意向清单</li>
+                                    <li>餐饮意向清单</li>
+                                </ul>
+                            </div>
+                            <div class="node-label">
+                                <span class="node-week">W5-6</span>
+                                <span class="node-phase">渠道触达</span>
+                            </div>
+                        </div>
+                        <!-- 节点4：内容拉新 -->
+                        <div class="timeline-node">
+                            <div class="node-dot"></div>
+                            <div class="node-tooltip">
+                                <div class="tt-week">第 7-8 周 · 内容拉新</div>
+                                <div class="tt-title">交付物</div>
+                                <ul class="tt-list">
+                                    <li>短视频排期</li>
+                                    <li>产地直播</li>
+                                </ul>
+                            </div>
+                            <div class="node-label">
+                                <span class="node-week">W7-8</span>
+                                <span class="node-phase">内容拉新</span>
+                            </div>
+                        </div>
+                        <!-- 节点5：节日转化 -->
+                        <div class="timeline-node">
+                            <div class="node-dot"></div>
+                            <div class="node-tooltip">
+                                <div class="tt-week">第 9-10 周 · 节日转化</div>
+                                <div class="tt-title">交付物</div>
+                                <ul class="tt-list">
+                                    <li>礼盒订单</li>
+                                    <li>企业团购订单</li>
+                                </ul>
+                            </div>
+                            <div class="node-label">
+                                <span class="node-week">W9-10</span>
+                                <span class="node-phase">节日转化</span>
+                            </div>
+                        </div>
+                        <!-- 节点6：复盘 -->
+                        <div class="timeline-node">
+                            <div class="node-dot"></div>
+                            <div class="node-tooltip">
+                                <div class="tt-week">第 11-12 周 · 复盘</div>
+                                <div class="tt-title">交付物</div>
+                                <ul class="tt-list">
+                                    <li>会员日活动</li>
+                                    <li>数据优化清单</li>
+                                </ul>
+                            </div>
+                            <div class="node-label">
+                                <span class="node-week">W11-12</span>
+                                <span class="node-phase">复盘</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 页面3：数字赋能方案 ========== -->
+        <section class="page" id="page-solution">
+            <div class="page-header">
+                <h2 class="page-title">数字赋能方案</h2>
+                <p class="page-subtitle">从种植到销售，全链路数字化升级，让兰州百合从"土特产"走向"国潮健康IP"。</p>
+            </div>
+
+            <!-- 四个环节卡片 -->
+            <div class="flow-cards">
+                <div class="flow-card">
+                    <div class="flow-card-inner">
+                        <div class="flow-card-front">
+                            <div class="flow-head">
+                                <span class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-5-4-8-8-8 0 4 3 8 8 8z"/><path d="M12 12c0-3 3-6 7-6 0 4-3 6-7 6z"/></svg></span>
+                                <h3>种植端</h3>
+                            </div>
+                            <ul class="flow-points">
+                                <li>建立种植户电子档案，记录地块、种球来源</li>
+                                <li>推广农事APP，农户手机填报自动上传</li>
+                                <li>GPS定位，实现地块可视化</li>
+                            </ul>
+                            <p class="flow-hint">点击查看预期效果</p>
+                        </div>
+                        <div class="flow-card-back">
+                            <div class="flow-back-title">种植端 · 预期效果</div>
+                            <div class="flow-back-data">85<span>%</span></div>
+                            <div class="flow-back-desc">优质种球率提升至</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flow-card">
+                    <div class="flow-card-inner">
+                        <div class="flow-card-front">
+                            <div class="flow-head">
+                                <span class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l6 4V9l6 4V5l6 4v12H3z"/><path d="M7 21v-4"/><path d="M12 21v-4"/><path d="M17 21v-4"/></svg></span>
+                                <h3>加工端</h3>
+                            </div>
+                            <ul class="flow-points">
+                                <li>每批产品生成唯一溯源码</li>
+                                <li>引入智能分选设备，按大小色泽自动分级</li>
+                                <li>记录加工时间、批次、检验报告</li>
+                            </ul>
+                            <p class="flow-hint">点击查看预期效果</p>
+                        </div>
+                        <div class="flow-card-back">
+                            <div class="flow-back-title">加工端 · 预期效果</div>
+                            <div class="flow-back-data">3<span>倍</span></div>
+                            <div class="flow-back-desc">分选效率提升</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flow-card">
+                    <div class="flow-card-inner">
+                        <div class="flow-card-front">
+                            <div class="flow-head">
+                                <span class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+                                <h3>营销端</h3>
+                            </div>
+                            <ul class="flow-points">
+                                <li>搭建"陇上百合香"微信小程序</li>
+                                <li>抖音、小红书定期发布百合食谱</li>
+                                <li>产地直播+社群团购</li>
+                            </ul>
+                            <p class="flow-hint">点击查看预期效果</p>
+                        </div>
+                        <div class="flow-card-back">
+                            <div class="flow-back-title">营销端 · 预期效果</div>
+                            <div class="flow-back-data">40<span>%</span></div>
+                            <div class="flow-back-desc">线上销量占比提升至</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flow-card">
+                    <div class="flow-card-inner">
+                        <div class="flow-card-front">
+                            <div class="flow-head">
+                                <span class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg></span>
+                                <h3>物流端</h3>
+                            </div>
+                            <ul class="flow-points">
+                                <li>建设产地预冷站，采后2小时降温至0-4℃</li>
+                                <li>冷链车安装物联网温湿度传感器</li>
+                                <li>异常自动预警，全程可追溯</li>
+                            </ul>
+                            <p class="flow-hint">点击查看预期效果</p>
+                        </div>
+                        <div class="flow-card-back">
+                            <div class="flow-back-title">物流端 · 预期效果</div>
+                            <div class="flow-back-data">5<span>%以下</span></div>
+                            <div class="flow-back-desc">损耗率降至</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数字化三大益处数据条 -->
+            <div class="benefit-bar">
+                <div class="benefit-item">
+                    <span class="benefit-value">45%<em>+</em></span>
+                    <span class="benefit-label">复购率提升至45%以上</span>
+                </div>
+                <div class="benefit-divider"></div>
+                <div class="benefit-item">
+                    <span class="benefit-value">5%<em>↓</em></span>
+                    <span class="benefit-label">采后损耗从15%-20%降至5%以下</span>
+                </div>
+                <div class="benefit-divider"></div>
+                <div class="benefit-item">
+                    <span class="benefit-value">30%<em>↑</em></span>
+                    <span class="benefit-label">产品售价可比无溯源产品高20%-30%</span>
+                </div>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-card wide">
+                    <div class="card-title">产量与收入对比</div>
+                    <div class="chart-container benefit-chart" id="chart-benefit-1"></div>
+                </div>
+                <div class="chart-card wide">
+                    <div class="card-title">产业效能提升对比</div>
+                    <div class="chart-container benefit-chart" id="chart-benefit-2"></div>
+                </div>
+            </div>
+
+            <!-- 全渠道销售矩阵 -->
+            <div class="channel-matrix">
+                <div class="page-header">
+                    <h2 class="page-title">全渠道销售矩阵</h2>
+                    <p class="page-subtitle">五条渠道协同发力，从拉新到复购全链路覆盖，点击卡片查看各渠道关键合作条件。</p>
+                </div>
+
+                <div class="channel-grid" id="channelGrid">
+                    <!-- 渠道1：社区团购 -->
+                    <div class="channel-card" tabindex="0" role="button" aria-label="社区团购渠道，点击查看关键条件">
+                        <div class="channel-head">
+                            <span class="channel-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 40V24"/><path d="M24 24C24 16 17 10 8 10c0 8 6 14 16 14z" fill="currentColor" fill-opacity="0.15"/><path d="M24 30C24 22 31 16 40 16c0 8-6 14-16 14z" fill="currentColor" fill-opacity="0.2"/></svg>
+                            </span>
+                            <h3 class="channel-name">社区团购</h3>
+                        </div>
+                        <ol class="channel-steps">
+                            <li><span class="step-num">1</span>团长试吃</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">2</span>接龙转化</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">3</span>企微复购</li>
+                        </ol>
+                        <div class="channel-bubble">
+                            <div class="bubble-title">关键合作条件</div>
+                            <ul class="bubble-list">
+                                <li><b>账期：</b>T+7 结算</li>
+                                <li><b>冷链：</b>2-4℃ 全程冷链</li>
+                                <li><b>佣金：</b>8% - 12%</li>
+                                <li><b>起订：</b>50 盒起团</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 渠道2：企业团购 -->
+                    <div class="channel-card" tabindex="0" role="button" aria-label="企业团购渠道，点击查看关键条件">
+                        <div class="channel-head">
+                            <span class="channel-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="14" width="32" height="26" rx="2"/><path d="M8 20h32"/><path d="M16 14V8h16v6"/><path d="M24 28v6"/><path d="M20 31h8"/></svg>
+                            </span>
+                            <h3 class="channel-name">企业团购</h3>
+                        </div>
+                        <ol class="channel-steps">
+                            <li><span class="step-num">1</span>一页纸报价</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">2</span>送样</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">3</span>定制贺卡/提货卡</li>
+                        </ol>
+                        <div class="channel-bubble">
+                            <div class="bubble-title">关键合作条件</div>
+                            <ul class="bubble-list">
+                                <li><b>账期：</b>30 天月结</li>
+                                <li><b>冷链：</b>冷链配送上门</li>
+                                <li><b>定制：</b>贺卡/LOGO 另计</li>
+                                <li><b>起订：</b>100 盒起订</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 渠道3：商超专柜 -->
+                    <div class="channel-card" tabindex="0" role="button" aria-label="商超专柜渠道，点击查看关键条件">
+                        <div class="channel-head">
+                            <span class="channel-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16h36l-2 22a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2L6 16z" fill="currentColor" fill-opacity="0.12"/><path d="M6 16L4 8h40l-2 8"/><path d="M18 22v12"/><path d="M24 22v12"/><path d="M30 22v12"/></svg>
+                            </span>
+                            <h3 class="channel-name">商超专柜</h3>
+                        </div>
+                        <ol class="channel-steps">
+                            <li><span class="step-num">1</span>试吃台</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">2</span>堆头陈列</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">3</span>扫码溯源</li>
+                        </ol>
+                        <div class="channel-bubble">
+                            <div class="bubble-title">关键合作条件</div>
+                            <ul class="bubble-list">
+                                <li><b>账期：</b>45-60 天</li>
+                                <li><b>冷链：</b>冷链专柜陈列</li>
+                                <li><b>费用：</b>进场费 + 扣点</li>
+                                <li><b>配送：</b>日配鲜百合</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 渠道4：餐饮B端 -->
+                    <div class="channel-card" tabindex="0" role="button" aria-label="餐饮B端渠道，点击查看关键条件">
+                        <div class="channel-head">
+                            <span class="channel-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v10a6 6 0 0 0 12 0V8"/><path d="M18 18v22"/><path d="M34 8c-3 0-5 2-5 6s2 5 5 5v21"/></svg>
+                            </span>
+                            <h3 class="channel-name">餐饮 B 端</h3>
+                        </div>
+                        <ol class="channel-steps">
+                            <li><span class="step-num">1</span>推鲜切净菜规格</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">2</span>菜品开发支持</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">3</span>稳定供货</li>
+                        </ol>
+                        <div class="channel-bubble">
+                            <div class="bubble-title">关键合作条件</div>
+                            <ul class="bubble-list">
+                                <li><b>账期：</b>月结 30 天</li>
+                                <li><b>冷链：</b>全程冷链配送</li>
+                                <li><b>规格：</b>鲜切净菜定制</li>
+                                <li><b>供货：</b>日供稳定货源</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 渠道5：直播/私域 -->
+                    <div class="channel-card" tabindex="0" role="button" aria-label="直播私域渠道，点击查看关键条件">
+                        <div class="channel-head">
+                            <span class="channel-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="28" height="20" rx="2"/><path d="M34 16l8-4v20l-8-4"/><circle cx="20" cy="20" r="4"/></svg>
+                            </span>
+                            <h3 class="channel-name">直播 / 私域</h3>
+                        </div>
+                        <ol class="channel-steps">
+                            <li><span class="step-num">1</span>短视频种草</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">2</span>产地直播挂车</li>
+                            <li class="step-arrow" aria-hidden="true">↓</li>
+                            <li><span class="step-num">3</span>会员日复购</li>
+                        </ol>
+                        <div class="channel-bubble">
+                            <div class="bubble-title">关键合作条件</div>
+                            <ul class="bubble-list">
+                                <li><b>账期：</b>现结 / 7 天</li>
+                                <li><b>冷链：</b>冷链一件代发</li>
+                                <li><b>佣金：</b>15% - 25%</li>
+                                <li><b>排期：</b>日播排期对接</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <p class="channel-hint">💡 点击任意渠道卡片，查看该渠道关键合作条件</p>
+            </div>
+        </section>
+
+        <!-- ========== 页面4：扫码溯源模拟 ========== -->
+        <section class="page" id="page-trace">
+            <div class="page-header">
+                <h2 class="page-title">扫码溯源</h2>
+                <p class="page-subtitle">每一批兰州百合都有唯一溯源码，从种植到配送全程可查。</p>
+            </div>
+
+            <div class="trace-wrapper">
+                <!-- 查询区 -->
+                <div class="trace-query">
+                    <!-- 假二维码：点击模拟扫码 -->
+                    <div class="qr-scanner" id="qrScanner" role="button" tabindex="0" title="点击模拟扫码" aria-label="点击扫描包装二维码">
+                        <svg class="qr-code" id="fakeQr" width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="150" height="150" rx="10" fill="#ffffff"/>
+                            <g id="qrCells" fill="#1fb572"></g>
+                            <!-- 中心百合花徽标 -->
+                            <g>
+                                <rect x="51" y="51" width="48" height="48" rx="10" fill="#ffffff" stroke="#1fb572" stroke-width="1.6"/>
+                                <g fill="#1fb572" fill-opacity="0.12" stroke="#1fb572" stroke-width="1.5" stroke-linejoin="round">
+                                    <path d="M75 75C72.4 69 72.4 62 75 58C77.6 62 77.6 69 75 75Z"/>
+                                    <path transform="rotate(60 75 75)" d="M75 75C72.4 69 72.4 62 75 58C77.6 62 77.6 69 75 75Z"/>
+                                    <path transform="rotate(120 75 75)" d="M75 75C72.4 69 72.4 62 75 58C77.6 62 77.6 69 75 75Z"/>
+                                    <path transform="rotate(180 75 75)" d="M75 75C72.4 69 72.4 62 75 58C77.6 62 77.6 69 75 75Z"/>
+                                    <path transform="rotate(240 75 75)" d="M75 75C72.4 69 72.4 62 75 58C77.6 62 77.6 69 75 75Z"/>
+                                    <path transform="rotate(300 75 75)" d="M75 75C72.4 69 72.4 62 75 58C77.6 62 77.6 69 75 75Z"/>
+                                </g>
+                                <circle cx="75" cy="75" r="1.9" fill="#d8a444"/>
+                            </g>
+                            <!-- 扫描线 -->
+                            <rect class="qr-scanline" x="6" y="6" width="138" height="2.5" rx="1.25" fill="#1fb572"/>
+                        </svg>
+                        <span class="qr-scan-tip">点击模拟扫码</span>
+                    </div>
+                    <div class="trace-input-row">
+                        <input type="text" id="batchInput" placeholder="请输入批次号，如 LZBH-2026-001" maxlength="30">
+                        <button id="traceBtn" class="trace-btn">立即查询</button>
+                    </div>
+                    <p class="trace-tip">📷 扫描包装二维码 或 输入批次号 LZBH-2026-001</p>
+                </div>
+
+                <!-- 溯源结果卡片 -->
+                <div id="traceResult" class="trace-result hidden">
+                    <div class="trace-card-head">
+                        <span class="trace-batch">批次号：<b id="traceBatchNo">LZBH-2026-001</b></span>
+                        <span class="trace-verified">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                            已验证
+                        </span>
+                    </div>
+
+                    <div class="trace-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-head">
+                                    <span class="timeline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-5-4-8-8-8 0 4 3 8 8 8z"/><path d="M12 12c0-3 3-6 7-6 0 4-3 6-7 6z"/></svg></span>
+                                    <h4>种植</h4>
+                                    <span class="timeline-time">2026-03-12</span>
+                                </div>
+                                <p>西果园镇湖滩村 A-03 地块</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-head">
+                                    <span class="timeline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v4"/><path d="M18 4v4"/><path d="M4 8h16v4a8 8 0 0 1-16 0z"/><path d="M9 14a3 3 0 0 0 6 0"/></svg></span>
+                                    <h4>采摘</h4>
+                                    <span class="timeline-time">2026-08-15</span>
+                                </div>
+                                <p>人工采摘，一级鲜百合</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-head">
+                                    <span class="timeline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l6 4V9l6 4V5l6 4v12H3z"/><path d="M7 21v-4"/><path d="M12 21v-4"/><path d="M17 21v-4"/></svg></span>
+                                    <h4>加工</h4>
+                                    <span class="timeline-time">2026-08-16</span>
+                                </div>
+                                <p>智能分选，批次 JG-2026-0816</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-head">
+                                    <span class="timeline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+                                    <h4>检测</h4>
+                                    <span class="timeline-time">2026-08-17</span>
+                                </div>
+                                <p>β-葡聚糖 13.2mg/g，检测合格</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-head">
+                                    <span class="timeline-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg></span>
+                                    <h4>物流</h4>
+                                    <span class="timeline-time">2026-08-19</span>
+                                </div>
+                                <p>全程冷链 2-4℃，已送达</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== 页面5：产品矩阵与团购 ========== -->
+        <section class="page" id="page-product">
+            <div class="page-header">
+                <h2 class="page-title">产品矩阵与团购</h2>
+                <p class="page-subtitle">从鲜百合到深加工产品，构建高附加值产品矩阵，让兰州百合走向全国。</p>
+            </div>
+
+            <!-- 产品矩阵卡片：四类产品矩阵 -->
+            <div class="product-grid">
+                <!-- 卡片1：引流款（拉新/试吃） -->
+                <div class="product-card">
+                    <div class="product-card-inner">
+                        <div class="product-card-front">
+                            <div class="product-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M24 42V26" />
+                                    <path d="M24 26C24 18 17 12 8 12c0 8 6 14 16 14z" fill="currentColor" fill-opacity="0.15" />
+                                    <path d="M24 32C24 24 31 18 40 18c0 8-6 14-16 14z" fill="currentColor" fill-opacity="0.25" />
+                                </svg>
+                            </div>
+                            <span class="prod-role role-traffic">引流款</span>
+                            <h3>鲜百合试吃装</h3>
+                            <p class="product-desc">真空鲜百合、试吃装（250g / 500g）</p>
+                            <div class="product-tags">
+                                <span class="prod-tag">拉新</span>
+                                <span class="prod-tag">试吃</span>
+                            </div>
+                            <div class="prod-price-band"><span>¥</span>19.9—39.9</div>
+                            <p class="prod-flip-hint">悬停查看核心任务 ↻</p>
+                        </div>
+                        <div class="product-card-back">
+                            <p class="prod-back-label">核心任务 · 促成首次购买</p>
+                            <ul class="prod-points">
+                                <li>低门槛试吃装，降低决策成本</li>
+                                <li>产地 48 小时直发，真空锁鲜零硫熏</li>
+                                <li>鲜甜脆嫩无苦味，建立口味认知</li>
+                            </ul>
+                            <div class="prod-price-band"><span>¥</span>19.9—39.9</div>
+                            <p class="prod-back-note">建议价格带 · 限量试吃装</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片2：利润款（礼赠/高客单） -->
+                <div class="product-card">
+                    <div class="product-card-inner">
+                        <div class="product-card-front">
+                            <div class="product-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M24 40V26" />
+                                    <path d="M8 26h32v14a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V26z" fill="currentColor" fill-opacity="0.15" />
+                                    <path d="M8 18h32v8H8z" fill="currentColor" fill-opacity="0.1" />
+                                    <path d="M24 18v16" />
+                                    <path d="M24 18c-3-6-9-8-12-6 2 4 5 6 12 6z" fill="currentColor" fill-opacity="0.2" />
+                                    <path d="M24 18c3-6 9-8 12-6-2 4-5 6-12 6z" fill="currentColor" fill-opacity="0.2" />
+                                </svg>
+                            </div>
+                            <span class="prod-role role-profit">利润款</span>
+                            <h3>节日礼盒</h3>
+                            <p class="product-desc">节日礼盒、企业定制礼盒</p>
+                            <div class="product-tags">
+                                <span class="prod-tag">礼赠</span>
+                                <span class="prod-tag">高客单</span>
+                            </div>
+                            <div class="prod-price-band"><span>¥</span>88—598</div>
+                            <p class="prod-flip-hint">悬停查看核心任务 ↻</p>
+                        </div>
+                        <div class="product-card-back">
+                            <p class="prod-back-label">核心任务 · 承接礼赠需求</p>
+                            <ul class="prod-points">
+                                <li>国潮插画包装，送礼体面有辨识度</li>
+                                <li>企业定制支持 logo / 贺卡 / 组合搭配</li>
+                                <li>鲜百合 + 深加工组合，提升客单价</li>
+                            </ul>
+                            <div class="prod-price-band"><span>¥</span>88—598</div>
+                            <p class="prod-back-note">建议价格带 · 支持企业定制</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片3：复购款（日常/休闲） -->
+                <div class="product-card">
+                    <div class="product-card-inner">
+                        <div class="product-card-front">
+                            <div class="product-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M38 20a14 14 0 0 0-24-6l-4 4" />
+                                    <path d="M10 12v8h8" />
+                                    <path d="M10 28a14 14 0 0 0 24 6l4-4" />
+                                    <path d="M38 36v-8h-8" />
+                                </svg>
+                            </div>
+                            <span class="prod-role role-repeat">复购款</span>
+                            <h3>日常休闲系列</h3>
+                            <p class="product-desc">百合脆片、百合粥料包、百合睡眠饮</p>
+                            <div class="product-tags">
+                                <span class="prod-tag">日常</span>
+                                <span class="prod-tag">休闲</span>
+                            </div>
+                            <div class="prod-price-band"><span>¥</span>15—49</div>
+                            <p class="prod-flip-hint">悬停查看核心任务 ↻</p>
+                        </div>
+                        <div class="product-card-back">
+                            <p class="prod-back-label">核心任务 · 拓展日常食用</p>
+                            <ul class="prod-points">
+                                <li>多规格多口味，覆盖早餐 / 零食 / 睡前场景</li>
+                                <li>独立小包装，开袋即食复购门槛低</li>
+                                <li>药食同源卖点，沉淀养生消费习惯</li>
+                            </ul>
+                            <div class="prod-price-band"><span>¥</span>15—49</div>
+                            <p class="prod-back-note">建议价格带 · 多件优惠</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 卡片4：B端款（餐饮/商超） -->
+                <div class="product-card">
+                    <div class="product-card-inner">
+                        <div class="product-card-front">
+                            <div class="product-icon">
+                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 16h36l-2 22a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2L6 16z" fill="currentColor" fill-opacity="0.12" />
+                                    <path d="M6 16L4 8h40l-2 8" />
+                                    <path d="M18 22v12" />
+                                    <path d="M24 22v12" />
+                                    <path d="M30 22v12" />
+                                    <path d="M16 8a4 4 0 0 1 8 0" />
+                                    <path d="M24 8a4 4 0 0 1 8 0" />
+                                </svg>
+                            </div>
+                            <span class="prod-role role-b2b">B 端款</span>
+                            <h3>餐饮商超专供</h3>
+                            <p class="product-desc">鲜切净菜、餐饮装</p>
+                            <div class="product-tags">
+                                <span class="prod-tag">餐饮</span>
+                                <span class="prod-tag">商超</span>
+                            </div>
+                            <div class="prod-price-band prod-price-b2b">按批量报价</div>
+                            <p class="prod-flip-hint">悬停查看核心任务 ↻</p>
+                        </div>
+                        <div class="product-card-back">
+                            <p class="prod-back-label">核心任务 · 稳定批量供货</p>
+                            <ul class="prod-points">
+                                <li>产地直供餐饮端，稳定品质与货源</li>
+                                <li>鲜切净菜免处理，后厨即烹降本增效</li>
+                                <li>支持大规格餐饮装 / 商超 OEM 贴牌</li>
+                            </ul>
+                            <div class="prod-price-band prod-price-b2b">按批量报价</div>
+                            <p class="prod-back-note">大宗采购 · 联系客户经理议价</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 助农倒计时 -->
+            <div class="countdown-box" id="countdownBox">
+                <div class="countdown-head">
+                    <span class="countdown-badge">助农专场</span>
+                    <span class="countdown-title">本轮助农团购倒计时</span>
+                </div>
+                <p class="countdown-tip">距离本场团购结束还剩</p>
+                <div class="countdown-clock" id="countdownClock">
+                    <span class="cd-unit"><b class="cd-num" id="cdH">02</b><i>时</i></span>
+                    <span class="cd-colon">:</span>
+                    <span class="cd-unit"><b class="cd-num" id="cdM">15</b><i>分</i></span>
+                    <span class="cd-colon">:</span>
+                    <span class="cd-unit"><b class="cd-num cd-seconds" id="cdS">30</b><i>秒</i></span>
+                </div>
+                <p class="countdown-foot">产地直发 · 限量助农价，错过再等一轮</p>
+            </div>
+
+            <!-- 团购预约表单 -->
+            <div class="order-form-box">
+                <h3>团购预约</h3>
+                <form id="orderForm" class="order-form">
+                    <div class="form-group">
+                        <label for="orderName">姓名</label>
+                        <input type="text" id="orderName" placeholder="请输入姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderPhone">电话</label>
+                        <input type="tel" id="orderPhone" placeholder="请输入11位手机号" maxlength="11">
+                    </div>
+                    <div class="form-group">
+                        <label for="orderProduct">意向产品</label>
+                        <select id="orderProduct">
+                            <option value="">请选择意向产品</option>
+                            <option value="引流款-鲜百合试吃装">引流款 · 鲜百合试吃装</option>
+                            <option value="利润款-节日礼盒">利润款 · 节日礼盒</option>
+                            <option value="复购款-日常休闲系列">复购款 · 日常休闲系列</option>
+                            <option value="B端款-餐饮商超专供">B 端款 · 餐饮商超专供</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary btn-submit">立即助力乡村振兴——预约团购</button>
+                </form>
+            </div>
+
+            <!-- 国潮包装与场景营销 -->
+            <div class="scene-marketing">
+                <div class="page-header">
+                    <h2 class="page-title">国潮包装与场景营销</h2>
+                    <p class="page-subtitle">以百合文化为内核，四大场景定制化包装与营销文案，让兰州百合走进生活每一刻。</p>
+                </div>
+
+                <div class="scene-slider" id="sceneSlider">
+                    <button class="scene-arrow scene-prev" id="scenePrev" type="button" aria-label="上一场景">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+
+                    <div class="scene-viewport">
+                        <div class="scene-track" id="sceneTrack">
+                            <!-- 场景1：爱情婚庆 -->
+                            <div class="scene-slide">
+                                <div class="scene-media">
+                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=%E5%85%B0%E5%B7%9E%E7%99%BE%E5%90%88%E5%A9%9A%E5%BA%86%E7%A4%BC%E7%9B%92%E5%8C%85%E8%A3%85%EF%BC%8C%E7%BA%A2%E8%89%B2%E5%96%9C%E5%BA%86%E5%9B%BD%E6%BD%AE%E9%A3%8E%E6%A0%BC%EF%BC%8C%E9%87%91%E8%89%B2%E7%99%BE%E5%90%88%E8%8A%B1%E7%BA%B9%E8%A3%85%E9%A5%B0%EF%BC%8C%E4%B8%AD%E5%BC%8F%E5%A9%9A%E7%A4%BC%E5%96%9C%E5%BA%86%E5%85%83%E7%B4%A0%EF%BC%8C%E9%AB%98%E7%BA%A7%E4%BA%A7%E5%93%81%E6%91%84%E5%BD%B1%EF%BC%8C%E6%9A%96%E5%85%89%E6%B0%9B%E5%9B%B4&image_size=landscape_16_9" alt="爱情婚庆场景包装">
+                                    <span class="scene-tag-flag">爱情婚庆</span>
+                                </div>
+                                <div class="scene-content">
+                                    <span class="scene-tag scene-tag-red">爱情婚庆</span>
+                                    <h3 class="scene-slogan">百年好合，不如百事合意</h3>
+                                    <p class="scene-desc">包装设计采用红色喜庆国潮元素，将百合"百年好合"的美好寓意融入婚庆伴手礼，以红金配色传递甜蜜祝福，让每一份喜礼都承载百年心意。</p>
+                                </div>
+                            </div>
+
+                            <!-- 场景2：家庭团圆 -->
+                            <div class="scene-slide">
+                                <div class="scene-media">
+                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=%E6%B8%A9%E9%A6%A8%E5%AE%B6%E5%BA%AD%E9%A4%90%E6%A1%8C%E5%9C%BA%E6%99%AF%EF%BC%8C%E5%85%B0%E5%B7%9E%E7%99%BE%E5%90%88%E8%8F%9C%E8%82%B4%EF%BC%8C%E4%B9%9D%E5%B9%B4%E7%94%9F%E9%95%BF%E7%8F%8D%E8%B4%B5%E7%99%BE%E5%90%88%EF%BC%8C%E6%9A%96%E8%89%B2%E8%B0%83%E7%81%AF%E5%85%89%EF%BC%8C%E5%9B%A2%E5%9C%86%E6%B0%9B%E5%9B%B4%EF%BC%8C%E4%B8%9C%E6%96%B9%E5%AE%B6%E5%BA%AD&image_size=landscape_16_9" alt="家庭团圆场景包装">
+                                    <span class="scene-tag-flag">家庭团圆</span>
+                                </div>
+                                <div class="scene-content">
+                                    <span class="scene-tag scene-tag-gold">家庭团圆</span>
+                                    <h3 class="scene-slogan">一瓣九年，合家清甜</h3>
+                                    <p class="scene-desc">每一颗兰州百合都历经九年岁月沉淀，包装以暖黄团圆色调呈现家的温度，突出"九年生长"的珍贵价值，让团圆饭桌上的每一口都是时光的馈赠。</p>
+                                </div>
+                            </div>
+
+                            <!-- 场景3：商务伴手礼 -->
+                            <div class="scene-slide">
+                                <div class="scene-media">
+                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=%E5%95%86%E5%8A%A1%E5%9C%BA%E6%99%AF%E5%85%B0%E5%B7%9E%E7%99%BE%E5%90%88%E4%BC%B4%E6%89%8B%E7%A4%BC%E7%9B%92%EF%BC%8C%E9%BB%84%E6%B2%B3%E9%BB%84%E5%9C%9F%E9%AB%98%E5%8E%9F%E6%84%8F%E8%B1%A1%EF%BC%8C%E9%87%91%E8%89%B2%E9%AB%98%E7%AB%AF%E5%8C%85%E8%A3%85%E8%AE%BE%E8%AE%A1%EF%BC%8C%E5%8A%9E%E5%85%AC%E6%A1%8C%E8%83%8C%E6%99%AF%EF%BC%8C%E5%95%86%E5%8A%A1%E7%A4%BC%E8%AE%AE&image_size=landscape_16_9" alt="商务伴手礼场景包装">
+                                    <span class="scene-tag-flag">商务伴手礼</span>
+                                </div>
+                                <div class="scene-content">
+                                    <span class="scene-tag scene-tag-green">商务伴手礼</span>
+                                    <h3 class="scene-slogan">黄河厚土聚合力，兰州百合呈心意</h3>
+                                    <p class="scene-desc">以黄河厚土的沉稳大气为设计灵感，包装采用金边深底的高端商务风格，将地理标志产品的地域文化底蕴融入伴手礼，彰显合作诚意与文化品位。</p>
+                                </div>
+                            </div>
+
+                            <!-- 场景4：文化传播 -->
+                            <div class="scene-slide">
+                                <div class="scene-media">
+                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=%E5%85%B0%E5%B7%9E%E7%99%BE%E5%90%88%E6%96%87%E5%8C%96%E5%BF%97%E4%B9%A6%E7%B1%8D%E6%A6%82%E5%BF%B5%EF%BC%8C%E7%99%BE%E5%90%88%E8%8A%B1%E7%93%A3%E7%99%BE%E7%89%87%E5%90%88%E6%8A%B1%E5%9B%A2%E7%BB%93%E5%92%8C%E7%9D%A6%E6%84%8F%E8%B1%A1%EF%BC%8C%E4%B8%9C%E6%96%B9%E9%9B%85%E8%87%B4%E6%96%87%E5%8C%96%E4%BC%A0%E6%92%AD%EF%BC%8C%E4%B9%A6%E5%8D%B7%E6%B0%94%E6%81%AF%EF%BC%8C%E6%B8%A9%E9%87%91%E8%89%B2%E8%B0%83&image_size=landscape_16_9" alt="文化传播场景包装">
+                                    <span class="scene-tag-flag">文化传播</span>
+                                </div>
+                                <div class="scene-content">
+                                    <span class="scene-tag scene-tag-blue">文化传播</span>
+                                    <h3 class="scene-slogan">百片合抱，团结和睦</h3>
+                                    <p class="scene-desc">以《兰州百合文化志》概念为载体，包装融合书卷气息与百合"百片合抱"的形态意象，传递团结和睦的文化内核，让百合成为地域文化传播的使者。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="scene-arrow scene-next" id="sceneNext" type="button" aria-label="下一场景">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+
+                    <div class="scene-dots" id="sceneDots"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p class="footer-line">陇上百合香 · 兰州百合产业数据可视化平台</p>
+        <p class="footer-line">数据来源：兰州市七里河区西果园镇实地调研（408份有效问卷）+ 公开产业报告</p>
+        <p class="footer-line">本作品由 AI 工具辅助开发，所有数据、图表、交互逻辑均由团队设计完成</p>
+        <p class="footer-line">© 2026 参赛团队</p>
+    </footer>
+
+    <script src="script.js?v=20261024f"></script>
+</body>
+</html>
